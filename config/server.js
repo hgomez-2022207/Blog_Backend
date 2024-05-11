@@ -7,14 +7,19 @@ import morgan from 'morgan'
 
 import { dbConnection } from './mongo.js'
 
+import comentRoute from '../src/comment/comment.routes.js'
+
 class Server {
     constructor(){
         this.app = express();
-        this.port = prcces.env.Port;
+        this.port = process.env.PORT;
+        
+        this.commentPath = '/apiBlog/v1/comment'
 
         this.conectarDB();
         this.middlewares();
-        this.routes()
+        this.routes();
+
     }
 
     async conectarDB(){
@@ -30,12 +35,14 @@ class Server {
     }
 
     routes(){
-
+        this.app.use(this.commentPath,comentRoute);
     }
 
-    liste(){
+    listen(){
         this.app.listen(this.port, () => {
             console.log('El servidor se encuentra ejecutando en el puerto:', this.port)
         })
     }
 }
+
+export default Server;
