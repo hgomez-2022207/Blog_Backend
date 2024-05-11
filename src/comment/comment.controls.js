@@ -5,9 +5,9 @@ import Comment from './comment.model.js';
 
 export const CommentPost = async (req, res) => {
     console.log('commentPost')
-    const { comment } = req.body;
+    const { name, comment } = req.body;
 
-    const com = new Comment({comment});
+    const com = new Comment({name, comment});
 
     await com.save();
 

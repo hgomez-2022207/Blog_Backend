@@ -8,6 +8,7 @@ import { validarCampos } from "../middlewares/validar-campos.js"
 router.post(
     '/',
     [
+        check('name','This name is void').not().isEmpty(),
         check('comment','This comment is void').not().isEmpty(),
         validarCampos,
     ],CommentPost
