@@ -15,3 +15,16 @@ export const CommentPost = async (req, res) => {
         com
     })
 }
+
+export const CommentGet = async (req, res) => {
+    const query = { estado: true };
+
+    const com = await Comment.find(query);
+
+    res.status(200).json({
+        com
+    });
+    
+    
+};
+
