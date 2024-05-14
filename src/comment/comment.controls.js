@@ -28,3 +28,24 @@ export const CommentGet = async (req, res) => {
     
 };
 
+export const proyectByName = async (req, res = response) => {
+    try {
+        const { name } = req.query;
+        const com = await Comment.find({ name: { $regex: name, $options: "i" } });
+
+        if (com.length === 0) {
+            return res.status(404).json({
+                msg: "No comments found with the provided name"
+            });
+        }
+
+        res.status(200).json({
+            com
+        });
+    } catch (error) {
+        console.error("Error fetching comments by name:", error);
+        res.status(500).json({
+            msg: "Internal server error"
+        });
+    }
+};

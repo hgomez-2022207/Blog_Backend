@@ -2,7 +2,7 @@ import { Router } from "express";
 import { check } from "express-validator";
 const router = Router();
 
-import {CommentPost, CommentGet} from './comment.controls.js'
+import {CommentPost, CommentGet, proyectByName} from './comment.controls.js'
 import { validarCampos } from "../middlewares/validar-campos.js"
 
 router.post(
@@ -17,5 +17,8 @@ router.post(
 router.get(
     '/',CommentGet
 )
+
+router.get("/proyect", proyectByName);
+
 
 export default router;
