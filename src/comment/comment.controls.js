@@ -1,5 +1,4 @@
 import { response, request } from 'express';
-import bcryptjs from 'bcryptjs';
 import Comment from './comment.model.js';
 
 
